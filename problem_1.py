@@ -1,10 +1,14 @@
+import sys
+
+
 def problem_1(a=3, b=5, limit=int(1e3)):
-    result = []
-    for num in range(limit):
-        if num % 3 == 0 or num % 5 == 0:
-            result += [num]
+    result = sum([num if num % a == 0 or num % b == 0 \
+                  else 0 for num in range(limit)])
     return sum(result)
 
 
 if __name__ == '__main__':
-    print(problem_1())
+    if len(sys.argv) == 3:
+        print(problem_1(*map(int, sys.argv[1:])))
+    else:
+        print(problem_1())
